@@ -3,7 +3,7 @@ package com.example.cinema.domain;
 import javax.persistence.*;
 
 @Entity
-public class Movie {
+public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
