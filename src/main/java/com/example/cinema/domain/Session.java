@@ -1,10 +1,9 @@
 package com.example.cinema.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Session {
@@ -13,6 +12,14 @@ public class Session {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private LocalDateTime startTime;
+    @ManyToOne
+    @JoinColumn(name = "movie_id")
+    private Movie movie;
+    @ManyToOne
+    @JoinColumn(name = "room_id")
+    private Room room;
+    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Ticket> tickets;
 
     public Session() {
     }
@@ -58,5 +65,35 @@ public class Session {
                 "id=" + id +
                 ", startTime=" + startTime +
                 '}';
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+    public List<Ticket> getTickets(){
+        if(tickets == null){
+            tickets = new ArrayList<>();
+
+        }return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+    public void addTicket(Ticket ticket){
+        getTickets().add(ticket);
+        ticket.setSession(this);
     }
 }

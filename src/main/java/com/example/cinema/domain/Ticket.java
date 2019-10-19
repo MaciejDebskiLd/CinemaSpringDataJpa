@@ -1,9 +1,6 @@
 package com.example.cinema.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -14,6 +11,9 @@ public class Ticket {
     private Long id;
     private String seat;
     private BigDecimal price;
+    @ManyToOne
+    @JoinColumn(name = "session_id")
+    private Session session;
 
     public Ticket() {
     }
@@ -69,5 +69,13 @@ public class Ticket {
                 ", seat='" + seat + '\'' +
                 ", price=" + price +
                 '}';
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
     }
 }

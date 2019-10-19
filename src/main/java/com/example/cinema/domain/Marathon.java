@@ -1,10 +1,9 @@
 package com.example.cinema.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Marathon {
@@ -13,6 +12,12 @@ public class Marathon {
     private Long id;
     private String name;
     private LocalDateTime startTime;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "marathon_movie",
+            joinColumns = @JoinColumn(name = "marathon_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id"))
+    private List<Movie> movies;
 
     public Marathon() {
     }
@@ -68,5 +73,16 @@ public class Marathon {
                 ", name='" + name + '\'' +
                 ", startTime=" + startTime +
                 '}';
+    }
+
+    public List<Movie> getMovies(){
+        if (movies == null){
+            movies = new ArrayList<>();
+        }
+        return movies;
+    }
+
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
     }
 }

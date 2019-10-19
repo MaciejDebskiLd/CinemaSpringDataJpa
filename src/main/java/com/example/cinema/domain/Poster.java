@@ -1,9 +1,6 @@
 package com.example.cinema.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Poster {
@@ -12,6 +9,9 @@ public class Poster {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String filePath;
+    @OneToOne
+    @JoinColumn(name = "movie_id", referencedColumnName = "id")
+    private Movie movie;
 
     public Poster() {
     }
@@ -57,5 +57,13 @@ public class Poster {
                 "id=" + id +
                 ", filePath='" + filePath + '\'' +
                 '}';
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 }

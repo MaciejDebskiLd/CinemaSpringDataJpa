@@ -1,6 +1,8 @@
 package com.example.cinema.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Movie {
@@ -14,6 +16,8 @@ public class Movie {
     private Integer length;
     private String description;
     private Integer requiredAge;
+    @ManyToMany(mappedBy = "movies", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Marathon> marathons;
 
     public Movie() {
     }
@@ -99,5 +103,16 @@ public class Movie {
                 ", description='" + description + '\'' +
                 ", requiredAge=" + requiredAge +
                 '}';
+    }
+
+    public List<Marathon> getMarathons(){
+        if (marathons == null){
+            marathons = new ArrayList<>();
+        }
+        return marathons;
+    }
+
+    public void setMarathons(List<Marathon> marathons) {
+        this.marathons = marathons;
     }
 }
