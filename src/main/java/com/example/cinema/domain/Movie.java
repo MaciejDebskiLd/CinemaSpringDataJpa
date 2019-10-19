@@ -83,8 +83,11 @@ public class Movie {
         Movie other = (Movie) o;
         return id != null && id.equals(other.getId());
     }
+
     @Override
-    public int hashCode() {return 31;}
+    public int hashCode() {
+        return 31;
+    }
 
     @Override
     public String toString() {

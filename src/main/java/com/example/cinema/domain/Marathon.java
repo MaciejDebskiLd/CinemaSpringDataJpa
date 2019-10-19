@@ -16,6 +16,7 @@ public class Marathon {
 
     public Marathon() {
     }
+
     public Marathon(Long id, String name, LocalDateTime startTime) {
         this.id = id;
         this.name = name;
@@ -54,8 +55,11 @@ public class Marathon {
         Marathon other = (Marathon) o;
         return id != null && id.equals(other.getId());
     }
+
     @Override
-    public int hashCode() {return 31;}
+    public int hashCode() {
+        return 31;
+    }
 
     @Override
     public String toString() {

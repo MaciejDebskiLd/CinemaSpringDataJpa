@@ -36,6 +36,7 @@ public class Poster {
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -44,8 +45,11 @@ public class Poster {
         Poster other = (Poster) o;
         return id != null && id.equals(other.getId());
     }
+
     @Override
-    public int hashCode() {return 31;}
+    public int hashCode() {
+        return 31;
+    }
 
     @Override
     public String toString() {

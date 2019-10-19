@@ -47,6 +47,7 @@ public class Ticket {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,8 +56,11 @@ public class Ticket {
         Ticket other = (Ticket) o;
         return id != null && id.equals(other.getId());
     }
+
     @Override
-    public int hashCode() {return 31;}
+    public int hashCode() {
+        return 31;
+    }
 
     @Override
     public String toString() {

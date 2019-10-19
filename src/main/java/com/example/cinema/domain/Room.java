@@ -65,8 +65,11 @@ public class Room {
         Room other = (Room) o;
         return id != null && id.equals(other.getId());
     }
+
     @Override
-    public int hashCode() {return 31;}
+    public int hashCode() {
+        return 31;
+    }
 
     @Override
     public String toString() {
