@@ -87,7 +87,8 @@ public class MovieServiceImpl implements MovieService {
             if (posterFilePath != null) {
                 poster.setFilePath(posterFilePath);
                 posterRepository.save(poster);
-            } else {
+            }
+            else {
                 posterRepository.delete(poster);
             }
         } else if (posterFilePath != null) {
