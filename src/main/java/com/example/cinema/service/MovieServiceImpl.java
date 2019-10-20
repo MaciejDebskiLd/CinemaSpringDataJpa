@@ -66,6 +66,7 @@ public class MovieServiceImpl implements MovieService {
     @Override
     @Transactional
     public void updateMovie(Long movieId, String title, EMovieCategory category, Integer length, String description, Integer requiredAge, String posterFilePath) {
+ //pobranie konkretnego filmu
         Optional<Movie> movieOptional = movieRepository.findById(movieId);
         if (!movieOptional.isPresent()) {
             throw new EntityDoesNotExistException("Movie, id=" + movieId);
@@ -78,7 +79,7 @@ public class MovieServiceImpl implements MovieService {
         movie.setRequiredAge(requiredAge);
 
         movieRepository.save(movie);
-
+//pobranie plakatu
         Optional<Poster> posterOptional = posterRepository.findByMovie(movie);
         if (posterOptional.isPresent()) {
             Poster poster = posterOptional.get();
