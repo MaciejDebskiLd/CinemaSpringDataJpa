@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@NamedEntityGraph(name = "Session.tickets", attributeNodes = @NamedAttributeNode("tickets"))
 public class Session {
 
     @Id

@@ -11,10 +11,9 @@ INSERT INTO movie (id,title,category, length, description, required_age) VALUES 
 INSERT INTO movie (id,title,category, length, description, required_age) VALUES (10,'Przemytnik','DRAMA',116,'Eastwood wciela się w rolę Earla Stone`a..',15);
 INSERT INTO movie (id,title,category, length, description, required_age) VALUES (11,'Niedobrani','COMEDY',121,'Fred nie jest typem amanta..',15);
 
-INSERT INTO poster (id,movie_id,file_path) VALUES (12, 5, '/images/posterHellboy.png');
+INSERT INTO poster (id,movie_id,file_path) VALUES (12, 8, '/images/posterHellboy.png');
 INSERT INTO poster (id,movie_id,file_path) VALUES (13, 9, '/images/posterImpostor.png');
 INSERT INTO poster (id,movie_id,file_path) VALUES (14, 10, '/images/posterPrzemytnik.png');
-
 
 INSERT INTO session (id, movie_id,room_id,start_time) VALUES (15,8,2,TIMESTAMP '2019-10-21 12:00:00');
 INSERT INTO session (id, movie_id,room_id,start_time) VALUES (16,8,1,TIMESTAMP '2019-10-21 15:00:00');
