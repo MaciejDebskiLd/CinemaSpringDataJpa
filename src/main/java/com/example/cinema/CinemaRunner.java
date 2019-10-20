@@ -41,7 +41,7 @@ public class CinemaRunner implements CommandLineRunner {
     private void movieServiceInvocations(){
         Page<Movie> allMovies = movieService.getAllMovies(PageRequest.of(1,2, Sort.by("title")));
         LOG.info("1. AllMovies. TotalElements={}, TotalPages={}", allMovies.getTotalElements(), allMovies.getTotalPages());
-        allMovies.get().forEach(movie -> LOG.info("   {}",,movie));
+        allMovies.get().forEach(movie -> LOG.info("   {}", movie));
 
         Page<Movie> moviesByPartOfTitle = movieService.getMoviesByPartOfTitle("gry", Pageable.unpaged());
         LOG.info("2. MoviesByPartOfTitle. TotalElements={}, TotalPages={}", moviesByPartOfTitle.getTotalElements(), moviesByPartOfTitle.getTotalPages());
