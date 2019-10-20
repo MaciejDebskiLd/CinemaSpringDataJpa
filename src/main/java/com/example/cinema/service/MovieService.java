@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface MovieService {
 
-    Long createMovie (String title, EMovieCategory category, Integer length, String description, Integer requiredAge, String posterFilePath);
+    Long createMovie(String title, EMovieCategory category, Integer length, String description, Integer requiredAge, String posterFilePath);
 
     Optional<Movie> getMovie(Long movieId);
 
@@ -19,7 +19,7 @@ public interface MovieService {
 
     Page<Movie> getAllMovies(Pageable pageable);
 
-    void updateMovie (Long movieId, String title, EMovieCategory category, Integer length, String description, Integer requiredAge, String posterFilePath);
+    void updateMovie(Long movieId, String title, EMovieCategory category, Integer length, String description, Integer requiredAge, String posterFilePath);
 
     void removeMovie(Long movieId);
 }
